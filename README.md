@@ -61,35 +61,35 @@ Data sheet design:
 ![](./docs/images/RBAC.png)
 
 # Scenario
-1. Registry  
+## 1. Registry  
 The user calls the registry interface through the restful api, and the user registration information includes user name, email, password, etc., among which email is a unique key. When registering, the system first needs to check the database to verify whether the user’s mailbox already exists. If it already exists, it proves that the user has already registered. Please log in with the user name and password. Otherwise, the system records the user information in the database.  
 ![](./docs/images/Registry.png)
 
-2. Login  
+## 2. Login  
 The user calls the login interface through the restful api. When the system logs in, first check whether the user name and password exist and match through the database. When the authentication is passed, the system will generate a JWT Token based on username, groupid, roleid, policies and other information, store it in the database, and then return the token value to the browser.  
 ![](./docs/images/Login.png)
 
-3. Logout  
+## 3. Logout  
 The user calls the logout interface through restful api. When a user logs out, the system deletes the token information of the current user in the database and cache.  
 ![](./docs/images/Logout.png)
 
-4. Renew Token  
+## 4. Renew Token  
 The user calls the renewtoken interface through restful api. The default token expiration time of the system is 30 minutes. When the browser needs to re-acquire the token, the system first obtains the JWT token through the header, then parses the token to obtain user information, regenerates the token according to the new time, and then updates the user token in the database and cache Information, and finally return the newly generated token to the browser.  
 ![](./docs/images/RenewToken.png)
 
-5. Get Public Key  
+## 5. Get Public Key  
 The user calls the Publickey interface through restful api. This interface is used when the client side obtains the public key, and the client side can parse the token information through the obtained public key.  
 ![](./docs/images/GetPublicKey.png)
 
-6. Get Cookie ID  
+## 6. Get Cookie ID  
 The user calls the Cookieid interface through restful api. This interface obtains cookie information on the UI side and saves it in a key-value pair for front-end caching.
 ![](./docs/images/GetCookieID.png)
 
-7. Set Active Group ID  
+## 7. Set Active Group ID  
 The user calls the setacitvegroupid interface through restful api. The system obtains the token information in the header through the interceptor, parses out the corresponding user information, and binds the user information to the groupid passed. Since the RBAC module has not been designed yet, the specific group information is still unclear, and the corresponding modification can be made after the design of the RBAC module in the future.  
 ![](./docs/images/SetActiveGroupID.png)
 
-8. Token Interceptor  
+## 8. Token Interceptor  
 Configure the interceptor for Springboot, and the system will verify all requests from the browser. The interceptor needs to verify the header information, whether the Token value exists, whether the Token time expires, whether the user exists, etc.  
 ![](./docs/images/TokenInterceptor.png)
 
