@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<suite name="testproj" parallel="false">
+    <test name="testController">
+        <classes>
+            <class name="com.bigdata.springboot.authenticationagent.WebControllerTest"/>
+            <methods>
+                <include name="registryTest"/>
+                <include name="loginTest"/>
+                <include name="logoutTest"/>
+                <include name="renewtokenTest"/>
+                <include name="publickeyTest"/>
+                <include name="cookieidTest"/>
+            </methods>
+        </classes>
+    </test>
+</suite>
