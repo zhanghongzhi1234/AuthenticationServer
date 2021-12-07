@@ -39,6 +39,10 @@ Data sheet design:
 + User (id, username, email, password, groupid, roleid)  
 + Token(id,email,token)  
 
+# Unit Test
+1. Use TestNG framework. 
+2. Unit test coverage > 40%
+
 # Class Diagram
 ![](./docs/images/ClassDiagram.png)
 ### 1. WebController  
